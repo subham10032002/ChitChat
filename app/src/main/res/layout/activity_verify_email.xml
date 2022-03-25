@@ -11,7 +11,88 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:orientation="vertical"/>
+        android:orientation="vertical"
+        android:layout_centerInParent="true"
+        >
+
+    <ImageView
+        android:layout_width="180dp"
+        android:layout_height="200dp"
+        android:background="@drawable/verificatin_image"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:gravity="center"
+        android:text="Email Verification"
+        android:textColor="@color/white"
+        android:textSize="40sp"
+        android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:text="Please verify your email address"
+            android:textColor="@color/white"
+            android:textSize="19sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/email_data"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:text="Please verify your email address"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/btn_verify_email"
+            android:clickable="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Verify email"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:padding="10dp"
+            android:background="@drawable/sign_btn"
+            android:elevation="30dp"
+            android:layout_marginStart="100dp"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="100dp"
+            android:layout_marginRight="100dp"
+            android:textStyle="bold"
+            android:textSize="22sp"
+            />
+
+        <TextView
+            android:id="@+id/btn_verify_done"
+            android:clickable="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DONE"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:padding="10dp"
+            android:background="@drawable/sign_btn"
+            android:elevation="30dp"
+            android:layout_marginStart="100dp"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="100dp"
+            android:layout_marginRight="100dp"
+            android:textStyle="bold"
+            android:textSize="22sp"
+            android:visibility="gone"
+            />
+
+    </LinearLayout>
 
 
 </RelativeLayout>

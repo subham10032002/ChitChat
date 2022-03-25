@@ -81,7 +81,8 @@ class RegistrationActivity : AppCompatActivity() {
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
 //                    addUserToDatabase(email,mauth.currentUser?.uid)
-                    val i = Intent(this,MainActivity::class.java)
+                    val i = Intent(this,VerifyEmail::class.java)
+                    i.putExtra("keyy",email)
                     startActivity(i);
 
                 } else {
