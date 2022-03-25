@@ -59,11 +59,11 @@ class VerifyEmail : AppCompatActivity() {
 
             if (firebaseUser.isEmailVerified) {
                 Toast.makeText(this, "User is verified", Toast.LENGTH_SHORT).show()
-                val i = Intent(this,HomeActivity::class.java)
+                val i = Intent(this,ProfileActivity::class.java)
                 startActivity(i)
             } else {
                 Toast.makeText(this, "User is verified", Toast.LENGTH_SHORT).show()
-                val i = Intent(this,HomeActivity::class.java)
+                val i = Intent(this,ProfileActivity::class.java)
                 startActivity(i)
             }
 
