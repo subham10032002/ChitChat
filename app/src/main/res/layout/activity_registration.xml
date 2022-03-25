@@ -33,6 +33,7 @@
             android:textStyle="bold" />
 
         <EditText
+            android:id="@+id/edt_Remail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="18dp"
@@ -47,6 +48,7 @@
             android:textColorHint="@color/white" />
 
         <EditText
+            android:id="@+id/edt_Rpassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="18dp"
@@ -62,6 +64,7 @@
             android:textColorHint="@color/white" />
 
         <EditText
+            android:id="@+id/edt_Rcompassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="18dp"
@@ -77,6 +80,8 @@
             android:textColorHint="@color/white" />
 
         <TextView
+            android:id="@+id/btn_RsignUp"
+            android:clickable="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Sign Up"
@@ -84,6 +89,7 @@
             android:textColor="@color/white"
             android:padding="10dp"
             android:background="@drawable/sign_btn"
+            android:elevation="30dp"
             android:layout_marginStart="100dp"
             android:layout_marginLeft="100dp"
             android:layout_marginTop="30dp"
@@ -113,7 +119,8 @@
             android:textSize="18sp"
             />
         <TextView
-            android:id="@+id/signUp"
+            android:id="@+id/btn_RsignIn"
+            android:clickable="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Sign In"

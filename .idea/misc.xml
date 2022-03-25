@@ -4,10 +4,12 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable/edt_background.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/new_shadow.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/sign_btn.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_login.xml" value="0.16666666666666666" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.26332413854677816" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.20050659179687502" />
-        <entry key="app/src/main/res/layout/activity_registration.xml" value="0.26902392843495243" />
+        <entry key="app/src/main/res/layout/activity_registration.xml" value="0.361907958984375" />
+        <entry key="app/src/main/res/layout/activity_verify_email.xml" value="0.2391304347826087" />
       </map>
     </option>
   </component>

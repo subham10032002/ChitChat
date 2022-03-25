@@ -31,7 +31,7 @@
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/edt_name"
+            android:id="@+id/edt_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="18dp"
@@ -68,9 +68,10 @@
             android:layout_height="wrap_content"
              android:text="Sign In"
             android:gravity="center"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:padding="10dp"
             android:background="@drawable/sign_btn"
+            android:elevation="30dp"
             android:layout_marginStart="100dp"
             android:layout_marginLeft="100dp"
             android:layout_marginTop="30dp"
@@ -87,7 +88,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="8dp"
         android:layout_alignParentBottom="true"
         >
         <TextView
