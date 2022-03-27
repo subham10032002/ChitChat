@@ -16,7 +16,11 @@ class HomeActivity : AppCompatActivity() {
 
         mauth = Firebase.auth
 
-
+        val currentUser = mauth.currentUser
+        if(currentUser == null){
+            val i = Intent(this, RegistrationActivity::class.java)
+            startActivity(i);
+        }
 
 
 
