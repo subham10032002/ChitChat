@@ -26,6 +26,9 @@ class ProfileActivity : AppCompatActivity() {
     val auth by lazy {
         FirebaseAuth.getInstance()
     }
+    val database by lazy {
+        FirebaseFirestore.getInstance()
+    }
     lateinit var downloadUrl: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +36,30 @@ class ProfileActivity : AppCompatActivity() {
 
         userImgView.setOnClickListener{
             checkPermissionImage()
+        }
+
+        btn_next.setOnClickListener {
+            btn_next.isEnabled=false
+            val name = nameEt.text.toString()
+            if(name.isEmpty())
+                Toast.makeText(this,"Name cannot be empty",Toast.LENGTH_SHORT).show()
+            else if(!::downloadUrl.isInitialized)
+                Toast.makeText(this,"Image cannot be empty",Toast.LENGTH_SHORT).show()
+            else{
+                val bundle: Bundle? = intent.extras
+               val email: String? = bundle?.getString("emaill")
+                val user = UserModel(name,email,downloadUrl,downloadUrl,auth.uid!!)
+                database.collection("users").document(auth.uid!!).set(user).addOnSuccessListener {
+                    startActivity(
+                        Intent(this,HomeActivity::class.java)
+                    )
+                    finish()
+                }.addOnFailureListener{
+                    btn_next.isEnabled=true
+                }
+
+            }
+
         }
     }
 

@@ -15,14 +15,15 @@ import kotlinx.android.synthetic.main.activity_verify_email.*
 class VerifyEmail : AppCompatActivity() {
 
     private lateinit var mauth : FirebaseAuth
+    var email: String? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_verify_email)
 
         val bundle: Bundle? = intent.extras
-        val name: String? = bundle?.getString("keyy")
+        email = bundle?.getString("keyy")
         mauth = Firebase.auth
-        email_data.text= name;
+        email_data.text= email;
         btn_verify_email.setOnClickListener {
             sendEmailVerification()
         }
@@ -60,10 +61,12 @@ class VerifyEmail : AppCompatActivity() {
             if (firebaseUser.isEmailVerified) {
                 Toast.makeText(this, "User is verified", Toast.LENGTH_SHORT).show()
                 val i = Intent(this,ProfileActivity::class.java)
+                i.putExtra("emaill",email)
                 startActivity(i)
             } else {
                 Toast.makeText(this, "User is verified", Toast.LENGTH_SHORT).show()
                 val i = Intent(this,ProfileActivity::class.java)
+                i.putExtra("emaill",email)
                 startActivity(i)
             }
 
