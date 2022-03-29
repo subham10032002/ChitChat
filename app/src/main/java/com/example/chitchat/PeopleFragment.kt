@@ -1,6 +1,7 @@
 package com.example.chitchat
 
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -86,7 +87,13 @@ class PeopleFragment : Fragment() {
                 model: UserModel
             ) {
                 if(viewHolder is UserViewHolder) {
-                    viewHolder.bind(userModel = model)
+                    viewHolder.bind(userModel = model){ name: String, photo: String, id: String ->
+                         val intent = Intent(requireContext(),ChatActivity::class.java)
+                        intent.putExtra(UID,id)
+                        intent.putExtra(NAME,name)
+                        intent.putExtra(IMAGE,photo)
+                        startActivity(intent)
+                    }
                 }
                 }
 

@@ -9,7 +9,7 @@ import java.util.*
 
 
 class UserViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    fun bind(userModel: UserModel) {
+    fun bind(userModel: UserModel, onClick:(name:String , photo:String , id:String) -> Unit) =
         with(itemView) {
             countTv.isVisible = false
             timeTV.isVisible = false
@@ -23,7 +23,10 @@ class UserViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
                 .error(R.drawable.img_1)
                 .into(userImgView)
 
+              setOnClickListener{
+                  onClick.invoke(userModel.name , userModel.thumbImage , userModel.uid)
+              }
 
-        }
+
     }
 }
