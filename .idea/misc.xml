@@ -13,6 +13,7 @@
         <entry key="app/src/main/res/layout/activity_profile.xml" value="0.2912136144805373" />
         <entry key="app/src/main/res/layout/activity_registration.xml" value="0.2205128205128205" />
         <entry key="app/src/main/res/layout/activity_verify_email.xml" value="0.16789398193359376" />
+        <entry key="app/src/main/res/layout/empty_view.xml" value="0.16485507246376813" />
         <entry key="app/src/main/res/layout/fragment_chat.xml" value="0.44952392578125" />
         <entry key="app/src/main/res/layout/list_item.xml" value="0.2812576293945312" />
       </map>

@@ -27,11 +27,11 @@ private const val NORMAL_VIEW_TYPE = 2
 
 class PeopleFragment : Fragment() {
 
-    private lateinit var mAdapter: FirestorePagingAdapter<UserModel, UserViewHolder>
+    private lateinit var mAdapter: FirestorePagingAdapter<UserModel, RecyclerView.ViewHolder>
     private lateinit var viewManager: RecyclerView.LayoutManager
     private val database by lazy {
         FirebaseFirestore.getInstance().collection("users")
-            .orderBy("name", Query.Direction.DESCENDING)
+            .orderBy("name", Query.Direction.ASCENDING)
     }
     private val auth by lazy {
         FirebaseAuth.getInstance()
@@ -62,21 +62,32 @@ class PeopleFragment : Fragment() {
             .build()
 
         // Instantiate Paging Adapter
-        mAdapter = object : FirestorePagingAdapter<UserModel, UserViewHolder>(options) {
+        mAdapter = object : FirestorePagingAdapter<UserModel, RecyclerView.ViewHolder>(options) {
             override fun onCreateViewHolder(
                 parent: ViewGroup,
                 viewType: Int
-            ): UserViewHolder {
-              return  UserViewHolder(layoutInflater.inflate(R.layout.list_item, parent, false))
+            ): RecyclerView.ViewHolder {
+                return when(viewType) {
+                    NORMAL_VIEW_TYPE -> {
+                          UserViewHolder(layoutInflater.inflate(R.layout.list_item, parent, false))
+
+                    }
+                    else ->
+                       EmptyViewHolder(layoutInflater.inflate(R.layout.empty_view, parent, false))
+
+
+                }
 
             }
 
             override fun onBindViewHolder(
-                viewHolder: UserViewHolder,
+                viewHolder: RecyclerView.ViewHolder,
                 position: Int,
                 model: UserModel
             ) {
-                viewHolder.bind(userModel = model)
+                if(viewHolder is UserViewHolder) {
+                    viewHolder.bind(userModel = model)
+                }
                 }
 
 
@@ -108,6 +119,17 @@ class PeopleFragment : Fragment() {
 
                     LoadingState.FINISHED -> {
                     }
+                }
+            }
+
+            override fun getItemViewType(position: Int): Int {
+                val item = getItem(position)?.toObject(UserModel::class.java)
+
+                return if(auth.uid == item!!.uid){
+                    DELETED_VIEW_TYPE
+                }
+                else {
+                    NORMAL_VIEW_TYPE
                 }
             }
 
