@@ -14,7 +14,7 @@
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/new_shadow.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/sign_btn.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_chat.xml" value="0.3966711649080601" />
+        <entry key="app/src/main/res/layout/activity_chat.xml" value="0.32722513089005234" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.24082336425781248" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.26332413854677816" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.20050659179687502" />
@@ -27,6 +27,8 @@
         <entry key="app/src/main/res/layout/list_item_chat_receive_message.xml" value="0.47562408447265625" />
         <entry key="app/src/main/res/layout/list_item_chat_sent_message.xml" value="0.47220001220703134" />
         <entry key="app/src/main/res/layout/xyx.xml" value="0.32101962324501815" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.128" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.128" />
       </map>
     </option>
   </component>

@@ -19,4 +19,6 @@ data class UserModel(
     constructor(name: String, email: String?, imageUrl: String, thumbImage: String, uid: String) : this(
         name, email.toString(),imageUrl,thumbImage,uid,
         "","Hey there I'm using ChitChat","")
+
+
 }
