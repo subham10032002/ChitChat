@@ -55,6 +55,43 @@ class ChatActivity : AppCompatActivity() {
         nameTv.text = friendName
         Picasso.get().load(friendImage).into(userImgView)
 
+        sendBtn.setOnClickListener{
+            msgEdtv.text?.let{
+                if(it.isNotEmpty()){
+                    sendMessage(it.toString())
+                    it.clear()
+                }
+            }
+        }
 
     }
+
+    private fun sendMessage(msg: String) {
+
+        val id = getMessages(friendId!!).push().key // push function will make a unique key
+        checkNotNull(id){
+            "Cannot be null"
+        }
+        val msgMap = Message(msg,mCurrentUid!!,id)
+        getMessages(friendId!!).child(id).setValue(msgMap).addOnSuccessListener {
+
+        }
+    }
+
+    //    id for the messages
+    private fun getId(friendId: String) : String {
+        return if(friendId> mCurrentUid!!){
+            mCurrentUid + friendId
+        }
+        else {
+              friendId + mCurrentUid
+
+        }
+    }
+
+    private fun getInbox(toUser : String , fromUser : String) =
+        db.reference.child("chats/$toUser/$fromUser")
+
+    private fun getMessages(friendId : String ) =
+        db.reference.child("messages/${getId(friendId)}")
 }
