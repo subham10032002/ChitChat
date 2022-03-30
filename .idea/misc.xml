@@ -3,14 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/chat_icon.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/count_background.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/edt_background.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/high_five.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_chat_icons_smile.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_high_five.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_high_five_selected.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/new_shadow.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/sign_btn.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_chat.xml" value="0.14336372847011145" />
+        <entry key="app/src/main/res/layout/activity_chat.xml" value="0.3966711649080601" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.24082336425781248" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.26332413854677816" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.20050659179687502" />
@@ -18,10 +22,10 @@
         <entry key="app/src/main/res/layout/activity_registration.xml" value="0.2205128205128205" />
         <entry key="app/src/main/res/layout/activity_verify_email.xml" value="0.16789398193359376" />
         <entry key="app/src/main/res/layout/empty_view.xml" value="0.16485507246376813" />
-        <entry key="app/src/main/res/layout/fragment_chat.xml" value="0.44952392578125" />
-        <entry key="app/src/main/res/layout/list_item.xml" value="0.2812576293945312" />
-        <entry key="app/src/main/res/layout/list_item_chat_receive_message.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/list_item_chat_sent_message.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_chat.xml" value="0.31752929687500003" />
+        <entry key="app/src/main/res/layout/list_item.xml" value="0.2799148559570312" />
+        <entry key="app/src/main/res/layout/list_item_chat_receive_message.xml" value="0.47562408447265625" />
+        <entry key="app/src/main/res/layout/list_item_chat_sent_message.xml" value="0.47220001220703134" />
         <entry key="app/src/main/res/layout/xyx.xml" value="0.32101962324501815" />
       </map>
     </option>

@@ -12,4 +12,6 @@
     <color name="pink">#F10086</color>
     <color name="browntype">#04293A</color>
     <color name="skg">#00FFDD</color>
+    <color name="chatBackground">#E8FFC2</color>
+    <color name="flexred">#FF1818</color>
 </resources>
