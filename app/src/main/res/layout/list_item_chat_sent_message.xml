@@ -33,7 +33,7 @@
 
             <TextView
                 tools:text="Hello World"
-                android:textSize="14sp"
+                android:textSize="16sp"
                 android:textColor="@color/white"
                 android:id="@+id/content"
                 android:layout_width="wrap_content"

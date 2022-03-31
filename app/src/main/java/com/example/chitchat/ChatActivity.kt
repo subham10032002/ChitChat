@@ -2,16 +2,15 @@ package com.example.chitchat
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.*
 import com.google.firebase.firestore.FirebaseFirestore
 import com.squareup.picasso.Picasso
 import com.vanniktech.emoji.EmojiManager
 import com.vanniktech.emoji.google.GoogleEmojiProvider
 import kotlinx.android.synthetic.main.activity_chat.*
+import java.util.*
 
 
 const val UID = "uid"
@@ -36,6 +35,10 @@ class ChatActivity : AppCompatActivity() {
         FirebaseDatabase.getInstance()
     }
     lateinit var currentUser : UserModel
+
+    private val messages = mutableListOf<ChatEvent>()
+
+    lateinit var chatAdapter: ChatAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         EmojiManager.install(GoogleEmojiProvider())
@@ -55,9 +58,14 @@ class ChatActivity : AppCompatActivity() {
             .addOnSuccessListener {
                 currentUser = it.toObject(UserModel::class.java)!!
             }
+         chatAdapter = ChatAdapter(messages,mCurrentUid!!)
+        msgRv.apply {
+            layoutManager = LinearLayoutManager(this@ChatActivity)
+            adapter = chatAdapter
+        }
         nameTv.text = friendName
         Picasso.get().load(friendImage).into(userImgView)
-
+        listenToMessages()
         sendBtn.setOnClickListener{
             msgEdtv.text?.let{
                 if(it.isNotEmpty()){
@@ -67,6 +75,46 @@ class ChatActivity : AppCompatActivity() {
             }
         }
 
+    }
+
+    private fun listenToMessages(){
+        getMessages(friendId!!)
+            .orderByKey()
+            .addChildEventListener(object :ChildEventListener{
+                override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
+                    val msg = snapshot.getValue(Message::class.java)!!
+                    addMessage(msg)
+                }
+
+                override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
+                    TODO("Not yet implemented")
+                }
+
+                override fun onChildRemoved(snapshot: DataSnapshot) {
+                    TODO("Not yet implemented")
+                }
+
+                override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {
+                    TODO("Not yet implemented")
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    TODO("Not yet implemented")
+                }
+
+            })
+    }
+
+    private fun addMessage(msg: Message) {
+         val eventBefore = messages.lastOrNull()
+
+        if((eventBefore != null && !eventBefore.sentAt.isSameDayAs(msg.sentAt)) || eventBefore == null){
+            messages.add(DateHeader(msg.sentAt, context = this))
+
+        }
+        messages.add(msg)
+        chatAdapter.notifyItemInserted(messages.size -1)
+        msgRv.scrollToPosition(messages.size -1)
     }
 
     private fun sendMessage(msg: String) {
