@@ -24,5 +24,5 @@ data class DateHeader(
     override val sentAt: Date = Date(),
     val context: Context
 ) : ChatEvent {
-    val datw:String = sentAt.formatAsHeader(context)
+    val date:String = sentAt.formatAsHeader(context)
 }

@@ -8,7 +8,6 @@
     android:paddingStart="16dp"
     android:paddingTop="4dp"
     android:paddingEnd="16dp"
-    android:background="@color/chatBackground"
     android:paddingBottom="4dp">
 
     <com.google.android.material.card.MaterialCardView
