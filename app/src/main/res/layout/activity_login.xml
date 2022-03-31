@@ -68,7 +68,7 @@
             android:layout_height="wrap_content"
              android:text="Sign In"
             android:gravity="center"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:padding="10dp"
             android:background="@drawable/sign_btn"
             android:elevation="30dp"

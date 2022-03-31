@@ -35,6 +35,7 @@ val EMAIL_ADDRESS_PATTERN = Pattern.compile(
         btn_signUp.setOnClickListener {
             val intent = Intent(this,RegistrationActivity::class.java)
             startActivity(intent)
+
         }
         
         btn_signIN.setOnClickListener { 
@@ -74,6 +75,8 @@ val EMAIL_ADDRESS_PATTERN = Pattern.compile(
                     // Sign in success, update UI with the signed-in user's information
                     val i = Intent(this,MainActivity::class.java)
                     startActivity(i);
+                    finish()
+
 
                 } else {
                     // If sign in fails, display a message to the user.

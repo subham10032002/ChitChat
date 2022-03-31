@@ -8,8 +8,13 @@ import com.google.firebase.database.*
 import com.google.firebase.firestore.FirebaseFirestore
 import com.squareup.picasso.Picasso
 import com.vanniktech.emoji.EmojiManager
+import com.vanniktech.emoji.EmojiPopup
 import com.vanniktech.emoji.google.GoogleEmojiProvider
 import kotlinx.android.synthetic.main.activity_chat.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import java.util.*
 
 
@@ -65,6 +70,20 @@ class ChatActivity : AppCompatActivity() {
         }
         nameTv.text = friendName
         Picasso.get().load(friendImage).into(userImgView)
+
+        val emojiPopup = EmojiPopup.Builder.fromRootView(rootView).build(msgEdtv)
+        smileBtn.setOnClickListener {
+            emojiPopup.toggle()
+        }
+        swipeToLoad.setOnRefreshListener {
+            val workerScope = CoroutineScope(Dispatchers.Main)
+            workerScope.launch {
+                delay(2000)
+                swipeToLoad.isRefreshing = false
+            }
+        }
+
+
         listenToMessages()
         sendBtn.setOnClickListener{
             msgEdtv.text?.let{

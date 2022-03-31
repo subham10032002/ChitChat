@@ -79,6 +79,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="2dp"
             android:layout_toStartOf="@id/sendBtn"
+            android:background="@color/white"
             app:cardCornerRadius="30dp">
 
             <RelativeLayout
@@ -113,6 +114,7 @@
                     android:paddingBottom="18dp"
                     android:singleLine="false"
                     android:textColorHint="#b6b6b6"
+                    android:textColor="@color/black"
                     android:textSize="16sp" />
 
             </RelativeLayout>
