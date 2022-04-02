@@ -89,6 +89,23 @@
                 tools:text="4"
                 />
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+            <TextView
+                android:id="@+id/emailID"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:lines="1"
+                android:textColor="@color/flexred"
+                android:textSize="14sp"
+                tools:text="subhamsahu270@gmail.com"
+                />
+
+        </LinearLayout>
 
     </LinearLayout>
 

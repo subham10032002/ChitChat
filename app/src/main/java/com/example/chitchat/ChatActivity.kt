@@ -1,11 +1,12 @@
 package com.example.chitchat
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.google.firebase.firestore.FirebaseFirestore
+import com.puldroid.whatsappclone.adapters.ChatAdapter
 import com.squareup.picasso.Picasso
 import com.vanniktech.emoji.EmojiManager
 import com.vanniktech.emoji.EmojiPopup
@@ -15,7 +16,6 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import java.util.*
 
 
 const val UID = "uid"
@@ -40,14 +40,24 @@ class ChatActivity : AppCompatActivity() {
         FirebaseDatabase.getInstance()
     }
     lateinit var currentUser : UserModel
+    private val messages: MutableList<ChatEvent> = mutableListOf()
 
-    private val messages = mutableListOf<ChatEvent>()
-
+    private lateinit var keyboardVisibilityHelper: KeyboardVisibilityUtil
     lateinit var chatAdapter: ChatAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         EmojiManager.install(GoogleEmojiProvider())
         setContentView(R.layout.activity_chat)
+
+        keyboardVisibilityHelper = KeyboardVisibilityUtil(rootView) {
+            msgRv.scrollToPosition(messages.size - 1)
+        }
+
+
+        toolbar.setNavigationOnClickListener {
+            onBackPressed()
+        }
+
 
         supportActionBar?.hide()
 
@@ -83,8 +93,6 @@ class ChatActivity : AppCompatActivity() {
             }
         }
 
-
-        listenToMessages()
         sendBtn.setOnClickListener{
             msgEdtv.text?.let{
                 if(it.isNotEmpty()){
@@ -93,10 +101,45 @@ class ChatActivity : AppCompatActivity() {
                 }
             }
         }
+        listenToMessages() { msg, update ->
+            if (update) {
+                updateMessage(msg)
+            } else {
+                addMessage(msg)
+            }
+        }
+
+        chatAdapter.highFiveClick = { id, status ->
+            updateHighFive(id, status)
+        }
+
+        updateReadCount()
+
 
     }
 
-    private fun listenToMessages(){
+    private fun updateReadCount() {
+        getInbox(mCurrentUid!!,friendId!!).child("count").setValue(0)
+    }
+
+    private fun updateHighFive(id: String, status: Boolean) {
+        getMessages(friendId!!).child(id).updateChildren(mapOf("liked" to status))
+    }
+
+    private fun updateMessage(msg: Message) {
+        val position = messages.indexOfFirst {
+            when (it) {
+                is Message -> it.msgId == msg.msgId
+                else -> false
+            }
+        }
+        messages[position] = msg
+
+        chatAdapter.notifyItemChanged(position)
+    }
+
+
+    private fun listenToMessages(param: (msg: Message, update : Boolean) -> Unit) {
         getMessages(friendId!!)
             .orderByKey()
             .addChildEventListener(object :ChildEventListener{
@@ -106,7 +149,8 @@ class ChatActivity : AppCompatActivity() {
                 }
 
                 override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
-                    TODO("Not yet implemented")
+                    val msg = snapshot.getValue(Message::class.java)!!
+                    updateMessage(msg)
                 }
 
                 override fun onChildRemoved(snapshot: DataSnapshot) {
@@ -205,4 +249,17 @@ class ChatActivity : AppCompatActivity() {
 
     private fun getMessages(friendId : String ) =
         db.reference.child("messages/${getId(friendId)}")
+
+    override fun onResume() {
+        super.onResume()
+        rootView.viewTreeObserver
+            .addOnGlobalLayoutListener(keyboardVisibilityHelper.visibilityListener)
+    }
+
+
+    override fun onPause() {
+        super.onPause()
+        rootView.viewTreeObserver
+            .removeOnGlobalLayoutListener(keyboardVisibilityHelper.visibilityListener)
+    }
 }

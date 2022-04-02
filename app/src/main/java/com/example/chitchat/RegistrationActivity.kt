@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
+import android.util.Patterns
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -52,11 +53,7 @@ class RegistrationActivity : AppCompatActivity() {
                 Toast.makeText(this,"Enter Valid Data", Toast.LENGTH_SHORT).show()
 
             }
-            else if(!isValidString(email)){
 
-                Toast.makeText(this,"Invalid email",Toast.LENGTH_SHORT).show()
-
-            }
 
             else if(password.length<6){
                 Toast.makeText(this,"Password length should be atleast 6 character", Toast.LENGTH_SHORT).show()
@@ -83,6 +80,7 @@ class RegistrationActivity : AppCompatActivity() {
 //                    addUserToDatabase(email,mauth.currentUser?.uid)
                     val i = Intent(this,VerifyEmail::class.java)
                     i.putExtra("keyy",email)
+                    finish()
                     startActivity(i);
 
                 } else {

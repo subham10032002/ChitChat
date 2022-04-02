@@ -15,7 +15,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        supportActionBar?.hide()
 
         window.setFlags(
             WindowManager.LayoutParams.FLAG_FULLSCREEN,
@@ -26,13 +25,13 @@ class MainActivity : AppCompatActivity() {
         Handler().postDelayed({
             if(auth.currentUser == null) {
                 val intent = Intent(this, RegistrationActivity::class.java)
-                startActivity(intent)
                 finish()
+                startActivity(intent)
             }
             else{
                 val intent = Intent(this, HomeActivity::class.java)
-                startActivity(intent)
                 finish()
+                startActivity(intent)
             }
 
         }, 1500)

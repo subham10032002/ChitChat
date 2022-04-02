@@ -4,6 +4,7 @@ import android.view.View
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.fragment_chat.view.*
 import kotlinx.android.synthetic.main.list_item.view.*
 import java.util.*
 
@@ -16,7 +17,7 @@ class UserViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
             titleTV.text = userModel.name
             subTitleTV.text = userModel.status
-
+            emailID.text = userModel.email
             Picasso.get()
                 .load(userModel.thumbImage)
                 .placeholder(R.drawable.img_1)
@@ -28,5 +29,6 @@ class UserViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
               }
 
 
-    }
+
+        }
 }

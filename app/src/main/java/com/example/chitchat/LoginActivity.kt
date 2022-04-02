@@ -3,6 +3,7 @@ package com.example.chitchat
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Patterns
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
@@ -46,11 +47,7 @@ val EMAIL_ADDRESS_PATTERN = Pattern.compile(
                 Toast.makeText(this,"Enter Valid Data",Toast.LENGTH_SHORT).show()
 
             }
-            else if(!isValidString(email)){
 
-                 Toast.makeText(this,"Invalid email",Toast.LENGTH_SHORT).show()
-
-            }
             else if(password.length<6){
                 Toast.makeText(this,"Password length should be atleast 6 character",Toast.LENGTH_LONG).show()
             }
@@ -73,9 +70,9 @@ val EMAIL_ADDRESS_PATTERN = Pattern.compile(
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
-                    val i = Intent(this,MainActivity::class.java)
-                    startActivity(i);
+                    val i = Intent(this,HomeActivity::class.java)
                     finish()
+                    startActivity(i);
 
 
                 } else {

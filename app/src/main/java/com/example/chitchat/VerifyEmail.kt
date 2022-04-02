@@ -63,10 +63,12 @@ class VerifyEmail : AppCompatActivity() {
                 val i = Intent(this,ProfileActivity::class.java)
                 i.putExtra("emaill",email)
                 startActivity(i)
+                finish()
             } else {
                 Toast.makeText(this, "User is verified", Toast.LENGTH_SHORT).show()
                 val i = Intent(this,ProfileActivity::class.java)
                 i.putExtra("emaill",email)
+                finish()
                 startActivity(i)
             }
 

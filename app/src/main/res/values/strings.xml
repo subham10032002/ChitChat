@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">chitChat</string>
+    <string name="app_name">ChitChat</string>
 
     <string name="today">Today</string>
     <string name="yesterday">Yesterday</string>

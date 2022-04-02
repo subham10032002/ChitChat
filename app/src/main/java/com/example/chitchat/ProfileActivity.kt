@@ -39,7 +39,6 @@ class ProfileActivity : AppCompatActivity() {
         }
 
         btn_next.setOnClickListener {
-            btn_next.isEnabled=false
             val name = nameEt.text.toString()
             if(name.isEmpty())
                 Toast.makeText(this,"Name cannot be empty",Toast.LENGTH_SHORT).show()
@@ -50,10 +49,9 @@ class ProfileActivity : AppCompatActivity() {
                val email: String? = bundle?.getString("emaill")
                 val user = UserModel(name,email,downloadUrl,downloadUrl,auth.uid!!)
                 database.collection("users").document(auth.uid!!).set(user).addOnSuccessListener {
-                    startActivity(
-                        Intent(this,HomeActivity::class.java)
-                    )
+                    val intent = Intent(this,HomeActivity::class.java)
                     finish()
+                    startActivity(intent)
                 }.addOnFailureListener{
                     btn_next.isEnabled=true
                 }

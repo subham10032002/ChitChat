@@ -7,15 +7,17 @@
     android:orientation="vertical"
     tools:context=".HomeActivity">
 
+
+
     <com.google.android.material.appbar.MaterialToolbar
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/toolbar"
+        android:layout_height="wrap_content"
         android:elevation="10dp"
         android:background="@color/backgroundd"
         app:popupTheme="@style/ThemeOverlay.MaterialComponents.Light"
         android:theme="@style/ThemeOverlay.MaterialComponents.Dark"
-        app:title="ChitChat"/>
+        app:title="ChitChat" />
 
     <com.google.android.material.tabs.TabLayout
         android:layout_width="match_parent"
@@ -43,7 +45,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             />
-
 
 
 

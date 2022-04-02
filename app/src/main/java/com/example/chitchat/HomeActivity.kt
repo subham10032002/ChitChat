@@ -1,9 +1,10 @@
 package com.example.chitchat
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
+import android.view.Menu
+import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.google.firebase.auth.FirebaseAuth
@@ -17,9 +18,9 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
+         setSupportActionBar(toolbar)
         mauth = Firebase.auth
 
-        supportActionBar?.hide()
 
         viewPager.adapter = ScreenSliderAdapter(this)
 //        by clicking on the fragments we can chanfe the tab
@@ -32,13 +33,28 @@ class HomeActivity : AppCompatActivity() {
         }
             ).attach()
 
-
-
-
-
-
-
-
-
     }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+
+
+        return super.onCreateOptionsMenu(menu)
+    }
+
+
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.signOut ->{
+                mauth.signOut()
+                finish()
+                startActivity(Intent(this,LoginActivity::class.java))
+                return true
+            }
+        }
+        return true
+    }
+
+
 }

@@ -10,9 +10,21 @@
     android:paddingEnd="16dp"
     android:layout_height="wrap_content">
 
+    <ImageView
+        android:id="@+id/highFiveImg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/like_message"
+        android:visibility="gone"
+        android:src="@drawable/ic_high_five_inverted"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/materialCardView3" />
+
+
     <com.google.android.material.card.MaterialCardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/materialCardView3"
         android:elevation="0dp"
         app:cardBackgroundColor="#0B4619"
         app:shapeAppearance="@style/ChatShapeAppearance"
