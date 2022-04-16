@@ -15,8 +15,8 @@ registration instead of mobile number.
 
 ## App Sections:
 
-![Registration Page]
+Registration Page
+
 ![image](https://user-images.githubusercontent.com/88156667/163686860-3fb1f7ef-5d58-4d92-9b37-c699265ee784.png)
 
-![Registration Page](https://ourimagehosting.com/image/9KKJ)
 
