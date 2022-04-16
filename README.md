@@ -43,5 +43,17 @@ Chat Box
 
 ![image](https://user-images.githubusercontent.com/88156667/163687570-ce4c1b38-71e8-4fe7-ac96-e3d818e16d3b.png)
 
+## Color Schema Used:
+
+| Color             | Hex                                                                |
+| ----------------- | ------------------------------------------------------------------ |
+| Gulf Blue | ![#0E185F](https://via.placeholder.com/10/0a192f?text=+) #0E185F |
+| Brilliant Azure | ![#2FA4FF](https://via.placeholder.com/10/f8f8f8?text=+) #2FA4FF |
+| Light green | ![#00FFDD](https://via.placeholder.com/10/00b48a?text=+) #00FFDD |
+| Chiffon | ![#E8FFC2](https://via.placeholder.com/10/00b48a?text=+) #E8FFC2 |
+
+![Screenshot 2022-04-02 at 23 42 48](https://user-images.githubusercontent.com/88156667/163687627-26cc35ce-bc82-48dc-8efa-5f4760185ebe.png)
+
+
 
 
